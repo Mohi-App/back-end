@@ -30,7 +30,7 @@ def register(request):
         "form": form
     }
 
-    return render(request, 'templates/authentication/register.html', context=context)
+    return render(request, 'authentication/register.html', context=context)
 
 
 @login_required

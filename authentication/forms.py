@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User
+
 from django import forms
 # from .models import Profile
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from .models import UserRegistrationModel
 from django.contrib.auth.forms import PasswordResetForm
@@ -12,7 +13,7 @@ class UserRegistration(forms.ModelForm):
         label='Repeat Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ('username', 'first_name', 'last_name', 'email')
 
         def clean_password2(self):
@@ -24,5 +25,5 @@ class UserRegistration(forms.ModelForm):
 
 class UserEditForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ('first_name', 'last_name', 'email')
