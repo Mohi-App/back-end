@@ -10,7 +10,7 @@ def dashboard(request):
     context = {
         "welcome": "Welcome to your dashboard"
     }
-    return render(request, 'authapp/dashboard.html', context=context)
+    return render(request, 'authentication/dashboard.html', context=context)
 
 
 def register(request):
@@ -22,7 +22,7 @@ def register(request):
                 form.cleaned_data.get('password')
             )
             new_user.save()
-            return render(request, 'authapp/register_done.html')
+            return render(request, 'authentication/register_done.html')
     else:
         form = UserRegistration()
 
@@ -30,7 +30,7 @@ def register(request):
         "form": form
     }
 
-    return render(request, 'authapp/register.html', context=context)
+    return render(request, 'templates/authentication/register.html', context=context)
 
 
 @login_required
@@ -45,4 +45,4 @@ def edit(request):
     context = {
         'form': user_form,
     }
-    return render(request, 'authapp/edit.html', context=context)
+    return render(request, 'authentication/edit.html', context=context)
